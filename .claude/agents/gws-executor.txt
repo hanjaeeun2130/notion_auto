@@ -1,0 +1,7 @@
+[.claude/agents/gws-executor.md] 개요 — GWS 실행 전담 서브에이전트
+
+1. frontmatter: name, description, tools: Bash(gws 명령), Read
+2. 입력 계약: 메인 에이전트가 넘긴 "승인된 작업 목록"만 처리
+3. 실행 절차: 유형별 skill 참조 (gws-gmail, gws-drive), 메일은 초안 우선
+4. 결과 보고: 작업별 성공/실패, 링크·메시지 ID, runs/ 기록 항목
+5. 오류 처리: 인증·권한 오류 시 중단 후 보고

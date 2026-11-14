@@ -1,0 +1,7 @@
+[.claude/skills/gws-drive/SKILL.md] 개요 — Drive/Docs/Sheets 파일 생성 절차
+
+1. frontmatter: name, description
+2. 지원 작업: 보고서(Docs), 일정·작업 표(Sheets), 폴더 저장·공유
+3. 절차: 저장 위치 확인 → 생성 → 내용 입력 → 링크 반환
+4. 파일 이름 규칙 (YYYY-MM-DD_작업명)
+5. 안전 규칙: 덮어쓰기·삭제 금지, 기본 공유 범위 = 비공개

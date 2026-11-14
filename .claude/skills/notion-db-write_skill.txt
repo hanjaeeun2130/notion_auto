@@ -1,0 +1,10 @@
+[.claude/skills/notion-db-write/SKILL.md] 개요 — Notion DB 쓰기 절차
+
+1. frontmatter: name, description
+2. 쓰기 전 확인
+   - 대상 DB 스키마 조회 (속성명·타입·선택지)
+   - select/status 값이 선택지에 없으면 가장 가까운 값 제안 또는 되묻기
+3. 행 생성 절차 (속성 타입별 값 형식: title, date, select, person 등)
+4. 수정·취소 처리
+   - "개인 : 카페 약속 취소" 같은 입력 → 해당 행 찾기 → 상태 변경 또는 보관
+5. 실패 처리: 권한 없음, 속성 불일치 시 보고

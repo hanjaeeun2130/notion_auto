@@ -1,0 +1,19 @@
+[CLAUDE.md] 개요 — 프로젝트 루트, 매 세션 자동 로드
+
+1. 프로젝트 목적
+   - 트리거 입력으로 Notion DB에 직접 등록 + DB 분석 → 보고 → 승인 → GWS CLI 실행
+2. 입력 라우팅 규칙 (가장 먼저 판단)
+   - 형식: "<키워드> : <내용>" (콜론 앞뒤 공백 허용, 전각 콜론 "："도 인식)
+   - 키워드가 config/triggers.md 에 있음 → 등록 모드
+   - 키워드가 없음 → 분석 모드
+   - 콜론 형식이지만 미등록 키워드 → 등록된 키워드 목록 제시 후 되묻기
+3. 등록 모드 절차
+   - trigger-parse → notion-writer → register-result.md 보고 → runs/ 기록
+4. 분석 모드 절차
+   - notion-analyst → report.md 보고 → 사용자 승인 → gws-executor → runs/ 기록
+5. 금지사항
+   - 승인 없는 메일 발송·파일 생성
+   - Notion 페이지 삭제 (보관만 허용)
+   - triggers.md 에 없는 DB에 쓰기
+6. 참조 파일 위치 (config/, docs/, templates/, skills/)
+7. 응답 언어·톤 (한글, 간결)

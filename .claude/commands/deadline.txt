@@ -1,0 +1,5 @@
+[.claude/commands/deadline.md] 개요 — /deadline 슬래시 명령
+
+1. frontmatter: description, argument-hint ([today|week])
+2. 동작: 인자 없으면 오늘, 분석 모드 1~2단계 실행 후 승인 요청
+3. 기본 제안: 담당자 마감 알림 메일, 마감 현황 Sheets

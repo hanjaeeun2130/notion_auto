@@ -1,0 +1,8 @@
+[.claude/skills/notion-db-query/SKILL.md] 개요 — Notion DB 조회 절차
+
+1. frontmatter: name, description
+2. 대상 DB 결정 (config/triggers.md 의 DB 목록 사용, 요청에 따라 단일·복수)
+3. 자연어 → 조회 조건 변환 (날짜·상태·담당자 표현)
+4. 조회 순서 (스키마 확인 → 쿼리 → 정리)
+5. 결과 정리 규칙 (정렬, 표시 컬럼)
+6. 예시 2~3개

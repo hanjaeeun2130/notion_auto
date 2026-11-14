@@ -1,0 +1,9 @@
+[.claude/commands/trigger.md] 개요 — /trigger 슬래시 명령 (키워드 관리)
+
+1. frontmatter: description, argument-hint ([list|add|remove] ...)
+2. 동작
+   - list: config/triggers.md 표 출력
+   - add <키워드> <DB 이름>: Notion에서 DB 검색 → ID 확인 → 표에 추가
+   - remove <키워드>: 표에서 삭제 (DB 자체는 건드리지 않음)
+3. 검증: 중복 키워드, 존재하지 않는 DB, 연결 권한 없는 DB
+4. 변경 후 결과 보고

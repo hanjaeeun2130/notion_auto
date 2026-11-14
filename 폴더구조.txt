@@ -1,0 +1,60 @@
+[폴더 구조 v2] agent_1114  (2026-11-14 폴더 생성 완료)
+※ skills/ 하위 폴더(trigger-parse/ 등)는 아직 만들지 않음 → 추후 생성 예정. 개요는 skills/*_skill.txt 참조
+※ .md / .json 파일은 아직 작성하지 않음. 각 폴더의 .txt 개요를 바탕으로 추후 작성
+
+agent_1114/
+├── CLAUDE.md                         # 입력 라우팅 규칙(등록 모드 / 분석 모드), 워크플로우, 금지사항
+├── README.md                         # 설치·인증·사용 예시
+├── .mcp.json                         # Notion 연결 설정                          * .md 아님
+├── .env.example                      # DB ID 등 환경변수 예시                     * .md 아님
+├── .claude/
+│   ├── settings.json                 # 권한: Notion 조회·등록=허용 / 삭제=거부 / gws=ask   * .md 아님
+│   ├── agents/
+│   │   ├── notion-writer.md          # [신규] 트리거 입력 → 해당 DB에 일정 등록 (쓰기)
+│   │   ├── notion-analyst.md         # DB 조회·분석 (읽기 전용)
+│   │   └── gws-executor.md           # 승인된 작업만 GWS CLI로 실행
+│   ├── skills/
+│   │   ├── trigger-parse/SKILL.md    # [신규] "키워드 : 내용" 해석 → 속성값 추출
+│   │   ├── notion-db-write/SKILL.md  # [신규] DB에 행 생성·수정 절차
+│   │   ├── notion-db-query/SKILL.md  # 자연어 요청 → 조회 조건 변환
+│   │   ├── gws-gmail/SKILL.md        # 메일 초안·발송
+│   │   └── gws-drive/SKILL.md        # Docs/Sheets 파일 생성
+│   └── commands/
+│       ├── trigger.md                # [신규] /trigger : 트리거 키워드 목록·추가·삭제
+│       └── deadline.md               # /deadline : 오늘 마감 확인
+├── config/
+│   └── triggers.md                   # [신규] 트리거 키워드 ↔ Notion DB 매핑표 (사용자가 직접 정의)
+├── docs/
+│   ├── notion-db-schema.md           # DB별 속성 정의 (개인일정·업무일정 등), 필수 입력 항목
+│   ├── intent-catalog.md             # 분석 모드 요청 유형 → 조회 조건 → GWS 작업
+│   ├── gws-cli-reference.md          # 직접 확인한 gws 명령만
+│   └── approval-policy.md            # 작업별 승인 규칙 (등록 / 조회 / GWS 실행)
+├── templates/
+│   ├── register-result.md            # [신규] 등록 결과 보고 양식
+│   ├── report.md                     # 분석 결과 보고 양식
+│   └── email/
+│       └── deadline-reminder.md      # 마감 알림 메일 템플릿
+└── runs/                             # 날짜별 실행 기록 (등록·분석·승인·실행)
+    └── .gitkeep
+
+v1 대비 변경점
+1. config/triggers.md 신설: 키워드는 사용자가 정하고, 이 표 하나만 고치면 동작이 바뀜
+2. 쓰기 경로 추가: notion-writer 에이전트 + trigger-parse / notion-db-write 스킬
+3. CLAUDE.md 가 입력을 두 모드로 분기
+4. /trigger 명령으로 대화 중에 키워드 관리 가능
+
+입력 분기
+[등록 모드] "개인 : 친구와 카페 약속 토요일 3시"
+  → 맨 앞 "키워드 :" 가 config/triggers.md 에 있음
+  → trigger-parse 로 제목·날짜·시간 등 추출
+  → notion-writer 가 개인일정 DB에 등록
+  → register-result.md 양식으로 결과 보고 → runs/ 기록
+
+[분석 모드] "오늘 마감 작업 확인해줘" (트리거 키워드 없음)
+  → notion-analyst 조회·분석 → report.md 로 보고
+  → 사용자 승인 → gws-executor 실행 → runs/ 기록
+
+설계 원칙
+1. 키워드 정의(config)와 처리 절차(skills)를 분리 → 키워드를 추가해도 절차 수정 불필요
+2. Notion 쓰기 / Notion 읽기 / GWS 실행을 서로 다른 에이전트로 나눠 권한 최소화
+3. Notion 삭제는 settings.json 에서 거부, 수정·취소는 보관(archive)으로만 처리

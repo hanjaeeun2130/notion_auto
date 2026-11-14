@@ -1,0 +1,7 @@
+[.claude/skills/gws-gmail/SKILL.md] 개요 — Gmail 작업 절차
+
+1. frontmatter: name, description
+2. 사용 명령 (docs/gws-cli-reference.md 참조)
+3. 절차: 수신자 확인 → 템플릿 채우기 → 초안 생성 → 확인 → 발송
+4. 안전 규칙: 외부 도메인 재확인, 대량 발송 재승인
+5. 결과 반환 형식 (초안 ID / 메시지 ID)

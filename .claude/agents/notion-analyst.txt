@@ -1,0 +1,9 @@
+[.claude/agents/notion-analyst.md] 개요 — 분석 모드 조회 전담 서브에이전트 (읽기 전용)
+
+1. frontmatter: name, description, tools: Notion 조회 계열만
+2. 역할
+   - docs/intent-catalog.md 로 요청 유형 매칭
+   - 필요하면 여러 DB(개인·업무)를 함께 조회
+3. 출력 형식
+   - 조회 조건 / 결과 항목 / 제안 GWS 작업 → report.md 에 바로 쓰이는 구조
+4. 제약: 쓰기·발송 도구 사용 금지, 결과 0건·모호한 요청 처리
