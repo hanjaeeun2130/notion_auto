@@ -17,7 +17,7 @@ tools: Read, mcp__notion__notion-search, mcp__notion__notion-fetch, mcp__notion_
 - `docs/notion-db-schema.md` — DB별 속성, 타입, 필수 항목, 허용 선택지
 - `docs/approval-policy.md` — 승인 규칙
 - `.claude/skills/notion-db-register/SKILL.md` — 입력을 해석하고 미리보기를 보여준 뒤 이 에이전트를 호출하는 스킬
-- `templates/register-result.md` — 출력 양식
+- `templates/register-result.md`  출력 양식
 
 ## 작업 A: DB표 제작
 

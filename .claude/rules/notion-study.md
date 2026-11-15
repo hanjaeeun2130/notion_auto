@@ -9,10 +9,11 @@ Save **study-related tasks** to the Notion **Study** DB.
 | Item | Value |
 |---|---|
 | Notion DB | Study |
-| DB ID | (fill in after the DB is created or found) |
+| DB ID | `4194deaa8451816db06debcef56c190a` (data source `collection://4194deaa-8451-81a5-8ce9-000ba4f668cf`) |
+| Properties | 학습주제 (title), 마감일 (date), 요약 (text) |
 | Trigger keyword | `학습` |
 | Aliases | `공부`, `study`, `배움` |
-| Defaults | Date missing → today |
+| Defaults | 마감일 missing → today |
 
 ## What belongs here
 

@@ -9,10 +9,11 @@ Save **personal tasks** to the Notion **Personal Tasks** DB.
 | Item | Value |
 |---|---|
 | Notion DB | Personal Tasks |
-| DB ID | (fill in after the DB is created or found) |
+| DB ID | `4194deaa845181f1ad00fda90e18f804` (data source `collection://4194deaa-8451-81ad-93ab-000be1a09c5b`) |
+| Properties | 일정 이름 (title), 날짜 (date), 사람 (people), 중요도 (select: 높음/보통/낮음), 위치 (text) |
 | Trigger keyword | `개인` |
 | Aliases | `사적`, `private` |
-| Defaults | Status = 예정; date missing → today |
+| Defaults | 날짜 missing → today |
 
 ## What belongs here
 

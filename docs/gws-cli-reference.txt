@@ -1,8 +1,0 @@
-[docs/gws-cli-reference.md] 개요 — GWS CLI 명령 레퍼런스
-
-1. 설치·인증 확인
-2. Gmail: 초안 / 발송 / 조회
-3. Drive: 생성 / 폴더 지정 / 공유
-4. Docs·Sheets: 생성 / 내용 입력
-5. 공통 옵션, 자주 나는 오류
-※ 승인 후 GWS CLI 설치 → --help 로 확인한 명령만 기록

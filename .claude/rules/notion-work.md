@@ -9,10 +9,11 @@ Save **work-related tasks** to the Notion **Work** DB.
 | Item | Value |
 |---|---|
 | Notion DB | Work |
-| DB ID | (fill in after the DB is created or found) |
+| DB ID | `4194deaa845181cfa46de46f748aa6f8` (data source `collection://4194deaa-8451-815b-bcaa-000ba17a90f5`) |
+| Properties | 업무 이름 (title), 등록 날짜 (date), 마감일 (date), 공동작업자 (people), 전송메일 (email), 중요도 (select: 높음/보통/낮음) |
 | Trigger keyword | `업무` |
 | Aliases | `일`, `work`, `메모` |
-| Defaults | Status = 진행 전; date missing → today |
+| Defaults | 등록 날짜 missing → today; a date given in the input goes to 마감일 |
 
 ## What belongs here
 
