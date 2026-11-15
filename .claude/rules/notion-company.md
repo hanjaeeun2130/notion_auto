@@ -1,6 +1,6 @@
 # Rule: notion-회사 (company)
 
-Save **진흥원-related schedules from Google Calendar** to the Notion **회사** DB.
+Save **진흥원-related schedules** to the Notion **회사** DB, either from Google Calendar (sync) or from direct input (`진흥원 : <content>`).
 
 > Precedence: if this rule conflicts with CLAUDE.md, skills, agents, `config/`, or `docs/`, this rule wins.
 
@@ -12,7 +12,7 @@ Save **진흥원-related schedules from Google Calendar** to the Notion **회사
 | DB ID | (fill in after the DB is created or found) |
 | Source | Google Calendar (via GWS CLI) |
 | Match word | `진흥원` |
-| Trigger keyword | None — runs on a request such as "진흥원 일정 가져와줘", "회사 일정 동기화해줘" |
+| Trigger keyword | `진흥원` for direct input (e.g. `진흥원 : 사업설명회 11/28 오후 2시`). Calendar sync has no keyword — it runs on a request such as "진흥원 일정 가져와줘", "회사 일정 동기화해줘" |
 
 ## Overrides of other rules
 
@@ -45,3 +45,9 @@ Save **진흥원-related schedules from Google Calendar** to the Notion **회사
 2. Never modify or delete Google Calendar events.
 3. Never delete Notion rows. If an event was removed from the calendar, report it and archive the row only after the user approves.
 4. If the 회사 DB does not exist yet, do not register. Tell the user and offer to create it (notion-writer Job A, with approval). Note: the existing page titled "회사" under 채용 공고 트래커 is **not** this DB.
+
+## Direct input (`진흥원 : <content>`)
+
+1. Register through the notion-db-register skill: property split → preview → user approval → notion-writer.
+2. There is no Google Calendar event ID; leave that property empty.
+3. After saving, output only one line: `저장됨: 회사`.

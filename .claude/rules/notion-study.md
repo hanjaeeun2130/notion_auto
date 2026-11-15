@@ -11,7 +11,7 @@ Save **study-related tasks** to the Notion **Study** DB.
 | Notion DB | Study |
 | DB ID | (fill in after the DB is created or found) |
 | Trigger keyword | `학습` |
-| Aliases | `공부`, `study` |
+| Aliases | `공부`, `study`, `배움` |
 | Defaults | Date missing → today |
 
 ## What belongs here

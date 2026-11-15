@@ -56,7 +56,7 @@ If the input also asks for GWS work (e.g. "팀장에게 메일 보내줘", "시�
 
 ```
 [Registration preview]
-Keyword: 업무 → DB: 업무일정
+Keyword: 업무 → DB: Work
 | Property | Value | Source |
 |---|---|---|
 | Title | 기획안 제출 | input |
@@ -81,7 +81,7 @@ Call the `notion-writer` sub-agent with:
 
 ### 8. Report and log
 
-- Report in `templates/register-result.md` format: keyword → DB, registered values with original expressions, page link, values filled by defaults, how to edit or undo (e.g. "개인 : 카페 약속 시간 4시로 변경").
+- Output only one line: `저장됨: [DB name]` (CLAUDE.md 3.1). If the user asks for details or the registration fails, report in `templates/register-result.md` format: keyword → DB, registered values with original expressions, page link, values filled by defaults, how to edit or undo (e.g. "개인 : 카페 약속 시간 4시로 변경").
 - Record in `runs/`: timestamp, original input, preview, approval, page ID, result.
 
 ### 9. Hand off follow-up tasks
@@ -99,9 +99,9 @@ If step 5 found follow-up tasks, show them and, after the user approves them, ha
 
 | Input | Result |
 |---|---|
-| `개인 : 친구와 카페 약속 토요일 3시` | DB 개인일정 / Title 친구와 카페 약속 / Date next Saturday / Time 15:00 (low-confidence: no 오전/오후) / Status 예정 (default) |
-| `업무：기획안 제출 11/20 마감` | DB 업무일정 / Title 기획안 제출 / Date 2026-11-20 / Status 진행 전 (default) |
-| `업무 : 주간회의 내일 오전 10시, 팀원들에게 메일 보내줘` | DB 업무일정 / Title 주간회의 / Date tomorrow / Time 10:00 / Follow-up: email to team → gws-execute |
+| `개인 : 친구와 카페 약속 토요일 3시` | DB Personal Tasks / Title 친구와 카페 약속 / Date next Saturday / Time 15:00 (low-confidence: no 오전/오후) / Status 예정 (default) |
+| `업무：기획안 제출 11/20 마감` | DB Work / Title 기획안 제출 / Date 2026-11-20 / Status 진행 전 (default) |
+| `업무 : 주간회의 내일 오전 10시, 팀원들에게 메일 보내줘` | DB Work / Title 주간회의 / Date tomorrow / Time 10:00 / Follow-up: email to team → gws-execute |
 | `개인 : 카페 약속 취소` | Edit / cancel request → find the row → show it → archive after approval |
 | `회식 : 금요일 7시` (no such keyword) | Show registered keywords and ask again |
 

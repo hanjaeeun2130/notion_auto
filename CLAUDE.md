@@ -57,12 +57,28 @@ Project root instructions. Loaded automatically at the start of every session.
 - Colon format but the keyword is not registered → show the list of registered keywords and ask the user again.
 - Request to import 진흥원 schedules from Google Calendar → **Company sync** (`.claude/rules/notion-company.md`), not analysis mode.
 
+### 3.1 Memo Classification Rules
+
+When the user enters a memo, classify it by its leading keyword and save it to Notion:
+
+| Keyword | Read this rules file first | Skill | Target DB |
+|---|---|---|---|
+| `개인:` | `.claude/rules/notion-personal.md` | `notion-db-register` | Personal Tasks |
+| `업무:` | `.claude/rules/notion-work.md` | `notion-db-register` | Work |
+| `진흥원:` | `.claude/rules/notion-company.md` | `notion-db-register` | 회사 |
+| `메모:` | `.claude/rules/notion-work.md` | `notion-db-register` | Work |
+| `배움:` | `.claude/rules/notion-study.md` | `notion-db-register` | Study |
+
+- Always read the matching rules file before running the skill.
+- The registration preview and user approval (section 4, step 2) still apply.
+- After saving, output **only one line**: `저장됨: [DB name]` (e.g. `저장됨: Work`). Failures and errors are still reported in full.
+
 ## 4. Register Mode Procedure (`notion-db-register` skill)
 
 1. Split the input content into the target DB's properties (title, date, time, etc.), fill defaults, and check for duplicates.
 2. Show the registration preview and get user approval. **Never register without approval.**
 3. `notion-writer` agent: register the approved values in the DB mapped to the keyword.
-4. Report the result using `templates/register-result.md`.
+4. Output only one line: `저장됨: [DB name]` (see 3.1). Use `templates/register-result.md` only if the user asks for details or the registration fails.
 5. If the input includes follow-up tasks, get approval and hand them to the `gws-execute` skill (5.1).
 6. Record the run in `runs/`.
 
@@ -97,13 +113,13 @@ No Notion writes in this mode.
 
 | Path | Contents |
 |---|---|
-| `docs/notion-db-schema.md` | Property definitions and required fields per DB |
-| `docs/intent-catalog.md` | Analysis request type → query conditions → GWS task |
-| `docs/gws-cli-reference.md` | Verified `gws` commands only |
-| `docs/approval-policy.md` | Approval rules per task type (register / query / GWS execution) |
-| `templates/register-result.md` | Register result report format |
-| `templates/report.md` | Analysis result report format |
-| `templates/email/deadline-reminder.md` | Deadline reminder email template |
+| `docs/notion-db-schema.md` | Property definitions and required fields per DB *(not created yet — fetch the schema with `notion-fetch`)* |
+| `docs/intent-catalog.md` | Analysis request type → query conditions → GWS task *(not created yet)* |
+| `docs/gws-cli-reference.md` | Verified `gws` commands only *(not created yet — no `gws` command is verified, so GWS execution cannot run)* |
+| `docs/approval-policy.md` | Approval rules per task type *(not created yet — follow the approval steps in this file)* |
+| `templates/register-result.md` | Register result report format *(only an outline exists: `templates/register-result.txt`)* |
+| `templates/report.md` | Analysis result report format *(only an outline exists: `templates/report.txt`)* |
+| `templates/email/deadline-reminder.md` | Deadline reminder email template *(only an outline exists: `.txt`)* |
 | `.claude/agents/` | `notion-writer`, `notion-analyst`, `gws-executor` |
 | `.claude/skills/` | `notion-db-register`, `notion-db-analyze`, `gws-execute` |
 | `.claude/skills/gws-execute/references/` | `gmail.md`, `drive.md` (GWS procedures and safety rules) |

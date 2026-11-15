@@ -11,7 +11,7 @@ Save **work-related tasks** to the Notion **Work** DB.
 | Notion DB | Work |
 | DB ID | (fill in after the DB is created or found) |
 | Trigger keyword | `업무` |
-| Aliases | `일`, `work` |
+| Aliases | `일`, `work`, `메모` |
 | Defaults | Status = 진행 전; date missing → today |
 
 ## What belongs here

@@ -69,9 +69,9 @@ Record in `runs/`: timestamp, request, query conditions, result count, suggested
 
 | Request | Query | Suggested task |
 |---|---|---|
-| 오늘 마감 작업 확인해줘 | 업무일정, due = today, unfinished | Deadline reminder email to assignees |
-| 이번 주 일정 정리해줘 | 개인일정 + 업무일정, date in this week | Weekly schedule Sheets |
-| 지연된 작업 알려줘 | 업무일정, due < today, unfinished | Reminder email to assignees |
+| 오늘 마감 작업 확인해줘 | Work, due = today, unfinished | Deadline reminder email to assignees |
+| 이번 주 일정 정리해줘 | Personal Tasks + Work, date in this week | Weekly schedule Sheets |
+| 지연된 작업 알려줘 | Work, due < today, unfinished | Reminder email to assignees |
 
 ## Constraints
 

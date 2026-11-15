@@ -28,7 +28,7 @@ tools: Read, mcp__notion__notion-search, mcp__notion__notion-fetch, mcp__notion_
    - **상태** — "미완료", "완료", "취소" 같은 표현을 `docs/notion-db-schema.md` 의 실제 상태값으로 매핑
    - **담당자** — 사람 속성과 매칭. 가능하면 담당자 → 이메일 매핑 사용
    - **기타** — DB(개인/업무), 제목 키워드, 우선순위 등
-3. **대상 DB 선택.** 요청이 DB를 한정하지 않으면 관련 DB(예: 개인일정과 업무일정)를 함께 조회
+3. **대상 DB 선택.** 요청이 DB를 한정하지 않으면 관련 DB(예: Personal Tasks와 Work)를 함께 조회
 4. `notion-query-data-sources` (여러 DB면 `notion-query-multiple-data-sources`)로 **조회**. 가능하면 조회 후 거르지 말고 Notion 필터를 사용
 5. 결과 **분석**: 건수, 날짜순 정렬, 요청에 맞게 DB·상태·담당자별 묶기, 기한 지난 항목 표시
 6. `docs/intent-catalog.md` 에서 결과에 맞는 **GWS 작업 제안** (예: 마감 알림 메일, 요약 시트). 제안만 하고 절대 실행하지 않음

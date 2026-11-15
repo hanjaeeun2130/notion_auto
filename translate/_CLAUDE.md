@@ -59,12 +59,28 @@
 - 콜론 형식이지만 미등록 키워드 → 등록된 키워드 목록을 제시하고 되묻기
 - Google 캘린더의 진흥원 일정 가져오기 요청 → 분석 모드가 아니라 **회사 동기화** (`.claude/rules/notion-company.md`)
 
+### 3.1 메모 분류 규칙
+
+사용자가 메모를 입력하면 앞의 키워드로 분류해 Notion에 저장합니다.
+
+| 키워드 | 먼저 읽을 규칙 파일 | 스킬 | 저장 DB |
+|---|---|---|---|
+| `개인:` | `.claude/rules/notion-personal.md` | `notion-db-register` | Personal Tasks |
+| `업무:` | `.claude/rules/notion-work.md` | `notion-db-register` | Work |
+| `진흥원:` | `.claude/rules/notion-company.md` | `notion-db-register` | 회사 |
+| `메모:` | `.claude/rules/notion-work.md` | `notion-db-register` | Work |
+| `배움:` | `.claude/rules/notion-study.md` | `notion-db-register` | Study |
+
+- 스킬을 실행하기 전에 반드시 해당 규칙 파일을 읽음
+- 등록 미리보기와 사용자 승인(4장 2단계)은 그대로 적용
+- 저장 완료 후 `저장됨: [DB명]` **한 줄만** 출력 (예: `저장됨: Work`). 실패나 오류는 기존대로 자세히 보고
+
 ## 4. 등록 모드 절차 (`notion-db-register` 스킬)
 
 1. 입력 내용을 대상 DB 속성(제목·날짜·시간 등)으로 나누고, 기본값을 채우고, 중복 여부 확인
 2. 등록 미리보기를 보여주고 사용자 승인을 받음. **승인 없이 등록 금지**
 3. `notion-writer` 에이전트: 승인된 값을 키워드에 매핑된 DB에 등록
-4. `templates/register-result.md` 양식으로 결과 보고
+4. `저장됨: [DB명]` 한 줄만 출력 (3.1 참고). 사용자가 자세한 내용을 요청하거나 등록이 실패한 경우에만 `templates/register-result.md` 양식 사용
 5. 입력에 후속 작업이 있으면 승인을 받아 `gws-execute` 스킬로 위임 (5.1)
 6. `runs/` 에 실행 기록
 
@@ -99,13 +115,13 @@
 
 | 경로 | 내용 |
 |---|---|
-| `docs/notion-db-schema.md` | DB별 속성 정의, 필수 입력 항목 |
-| `docs/intent-catalog.md` | 분석 모드 요청 유형 → 조회 조건 → GWS 작업 |
-| `docs/gws-cli-reference.md` | 직접 확인한 `gws` 명령만 |
-| `docs/approval-policy.md` | 작업별 승인 규칙 (등록 / 조회 / GWS 실행) |
-| `templates/register-result.md` | 등록 결과 보고 양식 |
-| `templates/report.md` | 분석 결과 보고 양식 |
-| `templates/email/deadline-reminder.md` | 마감 알림 메일 템플릿 |
+| `docs/notion-db-schema.md` | DB별 속성 정의, 필수 입력 항목 *(아직 없음 — `notion-fetch`로 스키마 조회)* |
+| `docs/intent-catalog.md` | 분석 모드 요청 유형 → 조회 조건 → GWS 작업 *(아직 없음)* |
+| `docs/gws-cli-reference.md` | 직접 확인한 `gws` 명령만 *(아직 없음 — 확인된 `gws` 명령이 없어 GWS 실행 불가)* |
+| `docs/approval-policy.md` | 작업별 승인 규칙 *(아직 없음 — 이 파일의 승인 절차를 따름)* |
+| `templates/register-result.md` | 등록 결과 보고 양식 *(개요만 있음: `templates/register-result.txt`)* |
+| `templates/report.md` | 분석 결과 보고 양식 *(개요만 있음: `templates/report.txt`)* |
+| `templates/email/deadline-reminder.md` | 마감 알림 메일 템플릿 *(개요만 있음: `.txt`)* |
 | `.claude/agents/` | `notion-writer`, `notion-analyst`, `gws-executor` |
 | `.claude/skills/` | `notion-db-register`, `notion-db-analyze`, `gws-execute` |
 | `.claude/skills/gws-execute/references/` | `gmail.md`, `drive.md` (GWS 절차와 안전 규칙) |
