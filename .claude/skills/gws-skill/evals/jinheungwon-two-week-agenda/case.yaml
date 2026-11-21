@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: jinheungwon-two-week-agenda
+expected_outcome: |
+  Lists events from every calendar whose name starts with 진흥원 for 2026-11-21 through the end of next week, in a table with date, time, title, location and calendar, using only read-only gws commands.

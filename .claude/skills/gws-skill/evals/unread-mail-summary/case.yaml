@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: unread-mail-summary
+expected_outcome: |
+  Shows up to 5 unread Gmail messages with sender, subject and date, using a read-only command, and changes nothing in the mailbox (no messages marked read).

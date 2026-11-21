@@ -117,13 +117,13 @@
 |---|---|
 | `docs/notion-db-schema.md` | DB별 속성 정의, 필수 입력 항목 *(아직 없음 — `notion-fetch`로 스키마 조회)* |
 | `docs/intent-catalog.md` | 분석 모드 요청 유형 → 조회 조건 → GWS 작업 *(아직 없음)* |
-| `docs/gws-cli-reference.md` | 직접 확인한 `gws` 명령만 *(아직 없음 — 확인된 `gws` 명령이 없어 GWS 실행 불가)* |
+| `docs/gws-cli-reference.md` | 직접 확인한 `gws` 명령만 *(인증과 Calendar/Drive 읽기 명령 확인 완료, 쓰기 명령은 아직 미확인)* |
 | `docs/approval-policy.md` | 작업별 승인 규칙 *(아직 없음 — 이 파일의 승인 절차를 따름)* |
 | `templates/register-result.md` | 등록 결과 보고 양식 *(개요만 있음: `templates/register-result.txt`)* |
 | `templates/report.md` | 분석 결과 보고 양식 *(개요만 있음: `templates/report.txt`)* |
 | `templates/email/deadline-reminder.md` | 마감 알림 메일 템플릿 *(개요만 있음: `.txt`)* |
 | `.claude/agents/` | `notion-writer`, `notion-analyst`, `gws-executor` |
-| `.claude/skills/` | `notion-db-register`, `notion-db-analyze`, `gws-execute` |
+| `.claude/skills/` | `notion-db-register`, `notion-db-analyze`, `gws-execute`, `gws-skill` (gws 일반 사용, 인증 정보는 자체 `.env`) |
 | `.claude/skills/gws-execute/references/` | `gmail.md`, `drive.md` (GWS 절차와 안전 규칙) |
 | `runs/` | 날짜별 실행 기록 (등록·분석·승인·실행) |
 | `.claude/rules/` | DB 분류 규칙: 개인 / 업무 / 학습 / 회사 (우선 적용) |

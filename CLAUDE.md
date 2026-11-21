@@ -115,13 +115,13 @@ No Notion writes in this mode.
 |---|---|
 | `docs/notion-db-schema.md` | Property definitions and required fields per DB *(not created yet — fetch the schema with `notion-fetch`)* |
 | `docs/intent-catalog.md` | Analysis request type → query conditions → GWS task *(not created yet)* |
-| `docs/gws-cli-reference.md` | Verified `gws` commands only *(not created yet — no `gws` command is verified, so GWS execution cannot run)* |
+| `docs/gws-cli-reference.md` | Verified `gws` commands only *(auth and read-only Calendar/Drive verified; write commands not verified yet)* |
 | `docs/approval-policy.md` | Approval rules per task type *(not created yet — follow the approval steps in this file)* |
 | `templates/register-result.md` | Register result report format *(only an outline exists: `templates/register-result.txt`)* |
 | `templates/report.md` | Analysis result report format *(only an outline exists: `templates/report.txt`)* |
 | `templates/email/deadline-reminder.md` | Deadline reminder email template *(only an outline exists: `.txt`)* |
 | `.claude/agents/` | `notion-writer`, `notion-analyst`, `gws-executor` |
-| `.claude/skills/` | `notion-db-register`, `notion-db-analyze`, `gws-execute` |
+| `.claude/skills/` | `notion-db-register`, `notion-db-analyze`, `gws-execute`, `gws-skill` (general gws usage; credentials in its own `.env`) |
 | `.claude/skills/gws-execute/references/` | `gmail.md`, `drive.md` (GWS procedures and safety rules) |
 | `runs/` | Run logs by date (register, analysis, approval, execution) |
 | `.claude/rules/` | DB routing rules: personal / work / study / 회사 (take precedence) |
